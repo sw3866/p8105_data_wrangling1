@@ -77,5 +77,22 @@ Import sas file
 pulse_df=read_sas("data/public_pulse_data.sas7bdat")
 pulse_df
 ```
+Don't do "read.csv" do "read_csv" and "$"
+
+## Export Data
+
+```{r}
+litters_df_cleaned=
+  read_csv("data/FAS_litters.csv")
+litters_df_cleaned
+```
+```{r}
+litters_df_cleaned=
+  janitor::clean_names(litters_df_cleaned)
+litters_df_cleaned
+write_csv(litters_df_cleaned,"data/litters_cleaned.csv")
+```
+
+
 
 
