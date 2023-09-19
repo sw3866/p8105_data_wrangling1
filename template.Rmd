@@ -4,6 +4,8 @@ output: github_document
 ---
 ```{r}
 library(tidyverse)
+library(readxl)
+library(haven)
 ```
 Let us import the `FAS_litters.csv` csv using a relative path
 ```{r}
@@ -45,3 +47,35 @@ view(litters_df)
 str(litters_df)
 skimr::skim(litters_df)
 ```
+## Option in `read_*`
+```{r}
+litters_df=
+  read_csv("data/FAS_litters.csv", skip=10, col_names = FALSE)
+litters_df
+```
+Look at NA variables
+```{r}
+litters_df=
+  read_csv("data/FAS_litters.csv",na=c("NA",19))
+litters_df
+```
+Column Type
+```{r}
+litters_df=
+  read_csv("data/FAS_litters.csv",col_types = cols(Group=col_factor()))
+litters_df
+```
+## Other file types
+Import xlsx file first
+```{r}
+mlb_df=
+  read_excel("data/mlb11.xlsx")
+mlb_df
+```
+Import sas file 
+```{r}
+pulse_df=read_sas("data/public_pulse_data.sas7bdat")
+pulse_df
+```
+
+
