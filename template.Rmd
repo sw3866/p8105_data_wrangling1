@@ -2,3 +2,46 @@
 title: "Simple document"
 output: github_document
 ---
+```{r}
+library(tidyverse)
+```
+Let us import the `FAS_litters.csv` csv using a relative path
+```{r}
+litters_df=
+  read_csv("data/FAS_litters.csv")
+litters_df
+```
+```{r}
+litters_df=
+  janitor::clean_names(litters_df)
+litters_df
+```
+Import the same dataset using an absolute path
+```{r}
+litters_df_abs=
+  read_csv("~/Desktop/P8105/Lecture/data_wrangling/P8105_data_wrangling1/data/FAS_litters.csv")
+litters_df_abs=
+  janitor::clean_names(litters_df_abs)
+litters_df
+```
+Import pup dataset
+```{r}
+pups_df=
+  read_csv("data/FAS_pups.csv")
+pups_df=
+  janitor::clean_names(pups_df)
+pups_df
+```
+## Look at data
+```{r}
+litters_df
+head(litters_df)
+tail(litters_df)
+```
+```{r eval=FALSE}
+view(litters_df)
+
+```{r}
+str(litters_df)
+skimr::skim(litters_df)
+```
