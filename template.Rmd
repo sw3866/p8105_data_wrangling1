@@ -1,0 +1,4 @@
+---
+title: "Simple document"
+output: github_document
+---
