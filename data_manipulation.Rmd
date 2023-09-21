@@ -65,4 +65,16 @@ mutate(litters_df,
 arrange(litters_df,gd0_weight)
 arrange(litters_df,group,gd0_weight)
 ```
-
+##pipes
+```{r}
+litters_df=
+  read.csv("data/FAS_litters.csv") |>
+  janitor::clean_names()|>
+  select(-starts_with("pups"))|>
+  mutate(
+       wt_gain= gd18_weight-gd0_weight,
+       group=str_to_lower(group)
+       )|>
+  drop_na(wt_gain)|>
+  arrange(group,wt_gain)
+```
