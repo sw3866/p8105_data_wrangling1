@@ -36,6 +36,15 @@ relocate(litters_df,litter_number)
 select(pups_df,litter_number,sex,pd_ears)
 ```
 ##'filter'
-
+get rid of rows using 'filter'
+```{r}
+filter(litters_df,group=='Mod8')
+filter(litters_df,group!='Mod8')
+filter(litters_df,gd0_weight>=20)
+filter(litters_df,group=='Mod8'|group=='Mod7')
+filter(litters_df,group%in%c('Con7','Con8'))
+filter(litters_df,!(group=='Con7'))
+filter(litters_df,gd0_weight>=20,group%in%c('Con7','Con8'))
+```
 ##'mutate'
 ##'arrange'
