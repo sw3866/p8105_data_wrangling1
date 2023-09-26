@@ -61,5 +61,28 @@ lotr_df=
   )|>
   relocate(movie)
 ```
+## Revisit FAS
+```{r}
+litter_df=
+  read_csv("data/FAS_litters.csv")|>
+  janitor::clean_names()|>
+  mutate(wt_gain=gd18_weight-gd0_weight)|>
+  select(litter_number, group, wt_gain)|>
+  separate(group,into=c("dose","days_of_tx"), 3)
+```
+```{r}
+pups_df=
+  read_csv("data/FAS_pups.csv")|>
+  janitor::clean_names()|>
+  mutate(
+    sex=case_match(
+      sex,
+      1 ~ "male",
+      2 ~ "female"
+        ))
+
+fas_df=
+  left_join(pups_df,litter_df, by="litter_number")
+```
 
   
